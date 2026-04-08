@@ -3,7 +3,7 @@
 > **AI 时代你的第二大脑**
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
 [![LangGraph](https://img.shields.io/badge/LangGraph-0.3+-green.svg)](https://github.com/langchain-ai/langgraph)
 [![MCP](https://img.shields.io/badge/MCP-2024--11--05-orange.svg)](https://modelcontextprotocol.io/)
 
@@ -30,6 +30,10 @@ ByteBrain 是 AI 时代你的第二大脑。帮助你管理和检索个人知识
 ---
 
 ## 快速开始
+
+### 前置要求
+- Python 3.12+
+- 8GB+ RAM（推荐 16GB）
 
 ### 安装
 
