@@ -34,7 +34,7 @@ class Config:
     top_k: int = 3
     similarity_threshold: float = 0.5
     
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         """后初始化"""
         if self.model_path is None:
             self.model_path = f"./{self.model_name.replace('/', '/')}"
