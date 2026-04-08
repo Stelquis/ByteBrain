@@ -1,3 +1,0 @@
-"""
-ByteBrain Integration Tests
-"""
