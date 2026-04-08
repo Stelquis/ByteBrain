@@ -469,5 +469,7 @@ AI Client (Claude/GPT)
 
 ## 更多
 
-- [快速开始](./guide/GETTING_STARTED.md)
-- [开发指南](./guide/DEVELOPMENT.md)
+- [快速开始](./guide/GETTING_STARTED.md) - 详细的安装和配置指南
+- [开发指南](./guide/DEVELOPMENT.md) - 开发者详细指南
+- [API 文档](./API.md) - 完整的 API 参考
+- [使用示例](./examples/) - 各种使用场景的示例
