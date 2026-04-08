@@ -1,0 +1,117 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bytebrain"
+version = "1.0.0"
+description = "AI 时代你的第二大脑"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [
+    {name = "ByteBrain Team"}
+]
+keywords = [
+    "ai",
+    "llm",
+    "rag",
+    "agent",
+    "langgraph",
+    "mcp",
+    "knowledge-management",
+    "personal-assistant"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Education",
+    "Topic :: Office/Business",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "streamlit>=1.30.0",
+    "numpy>=1.26.0",
+    "scipy>=1.11.0",
+    "scikit-learn>=1.4.0",
+    "tqdm>=4.66.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0.0",
+    "langchain>=0.1.0",
+    "langgraph>=0.3.0",
+    "llama-index>=0.10.0",
+    "qdrant-client>=1.6.0",
+    "chromadb>=0.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.7.0",
+    "flake8>=6.1.0",
+    "mypy>=1.5.0",
+    "pre-commit>=3.3.3",
+    "sphinx>=7.2.0",
+]
+full = [
+    "langchain>=0.1.0",
+    "langgraph>=0.3.0",
+    "llama-index>=0.10.0",
+    "qdrant-client>=1.6.0",
+    "chromadb>=0.4.0",
+    "torch>=2.0.1",
+    "transformers>=4.35.0",
+    "sentencepiece>=0.1.99",
+    "accelerate>=0.24.0",
+    "datasets>=2.14.0",
+    "peft>=0.6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-username/ByteBrain"
+Documentation = "https://github.com/your-username/ByteBrain/docs"
+Repository = "https://github.com/your-username/ByteBrain"
+Issues = "https://github.com/your-username/ByteBrain/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.black]
+line-length = 100
+target-version = ['py312', 'py313']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-v --cov=bytebrain --cov-report=term-missing"
