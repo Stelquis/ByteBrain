@@ -1,7 +1,14 @@
 import os
 from dataclasses import dataclass
-from typing import Optional
-import torch
+from typing import Optional, Any
+
+# 尝试导入 torch，如果不存在则使用默认值
+try:
+    import torch
+    has_torch = True
+except ImportError:
+    has_torch = False
+    torch = None
 
 
 @dataclass
@@ -27,8 +34,8 @@ class Config:
     # 推理配置
     max_seq_length: int = 2048
     max_new_tokens: int = 512
-    torch_dtype: torch.dtype = torch.bfloat16
-    device: str = "cuda" if torch.cuda.is_available() else "cpu"
+    torch_dtype: Any = "bfloat16" if has_torch else "float32"
+    device: str = "cuda" if (has_torch and torch.cuda.is_available()) else "cpu"
     
     # RAG配置
     top_k: int = 3
@@ -41,5 +48,15 @@ class Config:
         if self.embed_model_path is None:
             self.embed_model_path = f"./{self.embed_model_name.replace('/', '/')}"
         
-        if self.device == "cpu":
-            self.torch_dtype = torch.float32
+        if has_torch:
+            # 转换为实际的 torch dtype
+            if isinstance(self.torch_dtype, str):
+                dtype_map = {
+                    "bfloat16": torch.bfloat16,
+                    "float32": torch.float32,
+                    "float16": torch.float16
+                }
+                self.torch_dtype = dtype_map.get(self.torch_dtype, torch.float32)
+            
+            if self.device == "cpu":
+                self.torch_dtype = torch.float32
